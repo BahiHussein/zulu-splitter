@@ -53,7 +53,7 @@ describe('#split', function() {
 " \n ='PASSWARD:redhotchiile';"+
 " \n ?><?php"+
 " \n ='USER ID:abiddar@yahoo.");
-    console.log(result.nodes.length);
+    console.log(result);
     console.log("=======>   " + result.pattern);
     
   });

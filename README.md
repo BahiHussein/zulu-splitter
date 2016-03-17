@@ -1,76 +1,88 @@
 zulu-splitter
 =========
 
-A library to split according to
+A library to split text in many different ways. When mining or harvesting data, it is very important to keep the text scope and group related data together. ZULU-SPLITTER offers you different methods to split text and group text according to their distibution, pattern and more. Here is a list by all the current methods to split text 
 
-1. blocks
-2. lines
-3. block pattern
-4. line pattern
+* blocks
+* lines
+* block pattern
+* line pattern
 
 ## Installation
 
-  npm install zulu-splitter --save
+    npm install zulu-splitter --save
 
 ## Usage
-
 ```javascript
+var splitter = require('zulu-splitter');
+```
+**Example 1**: if you have text file in the following formate and you want to extract data according to their distribution
 
-  var splitter = require('zulu-splitter');
+```txt
+name: John Doe
+email: John.Doe@gmail.com
+id:88454
 
-  var text1 = 'name: John Doe \n email: John.Doe@gmail.com \n id:88454 \n\n name: John Roe \n email: John.Roe@gmail.com \n id:88757 \n\n name: Richard Roe \n email: Richard.Roe@gmail.com \n id: 88151';
+name: John Roe
+email: John.Roe@gmail.com
+id:88757
 
-  var nodes = splitter.split('block', text1);
+name: Richard Roe
+email: Richard.Roe@gmail.com
+id:88757
+```
+using splitter.split('block', text) will split text according to their grouping and will return an array with the following 
 
-    return:
-    [ 'name: John Doe \n email: John.Doe@gmail.com \n id:88454 ',
-      ' name: John Roe \n email: John.Roe@gmail.com \n id:88757 ',
-      ' name: Richard Roe \n email: Richard.Roe@gmail.com \n id: 88151' ]
-
-  var nodes = splitter.split('line', text1);
-    return:
-    [ 'name: John Doe', 
-    'email: John.Doe@gmail.com',
-    'id:88454 ',
-    ' name: Richard Roe,
-    'email: John.Roe@gmail.com',
-    'id:88757',
-    'name: Richard Roe',
-    'email: Richard.Roe@gmail.com',
-    'id: 88151' ]
-
-var text2 = "name: John Doe \n email: John.Doe@gmail.com \n id:88454 ====== \n\n name: John Roe \n email: John.Roe@gmail.com \n id:88757 ====== \n\n name: Richard Roe \n email: Richard.Roe@gmail.com \n id: 88151'";
-
-var nodes = splitter.split('patternInBlock', text2);
-
-    return:
-    {
-    pattern: '======';
-    nodes:
-    ['name: John Doe \n email: John.Doe@gmail.com \n id:88454',
-     '\n\n name: John Roe \n email: John.Roe@gmail.com \n id:88757',
-     '\n\n name: Richard Roe \n email: Richard.Roe@gmail.com \n id: 88151']
-    }
-
-var text3 = "name: John Doe name: Richard Roe name: John Roe";
-var nodes = splitter.split('patternInLine', text3);
-
-    return:
-    {
-    pattern: 'name';
-    nodes:
-    ['John Doe', 'Richard Roe', 'John Roe']
-    }
-
+```txt
+[ 'name: John Doe \n email: John.Doe@gmail.com \n id:88454 ',
+  ' name: John Roe \n email: John.Roe@gmail.com \n id:88757 ',
+  ' name: Richard Roe \n email: Richard.Roe@gmail.com \n id: 88757' 
+]
 ```
 
-## split()
+**Example 2**: if you are scanning file with unknown pattern, you may use linePatter or/and blockPattern to split the text. see the text below. 
 
-  splitter.split(method, text) takes two arguments
+```php
+='USER ID:pandya.maitri01@gmail.com';
+='PASSWARD:97270727';
+?><?php
+='USER ID:KANU';
+='PASSWARD:VOILAAA';
+?><?php
+='USER ID:darfaisal222@yahoo.com';
+='PASSWARD:9123456789';
+?><?php
+='USER ID:mehrajnazir@gmail.com';
+='PASSWARD:901837074545';
+?><?php
+```
+using 'patternInBlock' the splitter will find the pattern in the text and will split it. 
+**NOTE**: patterns retun an object the has pattern(String) and nodes(Array)
 
-  ### Types of Methods
+```javascript
+{ pattern: '?><?php',
+  nodes:[ 
+    '=\'USER ID:pandya.maitri01@gmail.com\'; \n=\'PASSWARD:97270727\'; \n ',
+    ' \n =\'USER ID:KANU\'; \n =\'PASSWARD:VOILAAA\'; \n ',
+    ' \n =\'USER ID:darfaisal222@yahoo.com\'; \n =\'PASSWARD:9123456789\'; \n ',
+    ' \n =\'USER ID:mehrajnazir@gmail.com\'; \n =\'PASSWARD:901837074545\'; \n ',
+    ' \n =\'USER ID:khanmehandilo@gmail.com\'; \n =\'PASSWARD:horsefish\'; \n ',
+    ' \n =\'USER ID:vickylove0001@gmail.com\'; \n =\'PASSWARD:9023239124\'; \n  ',
+    ' \n =\'USER ID:jerin41@gmail.com\'; \n =\'PASSWARD:redhotchiile\'; \n ',
+    ' \n =\'USER ID:abiddar@yahoo.' 
+    ] 
+}
+```
+## Methods
 
-1. 'block': split text according to its' distribution 
+### split() 
+ * @param  {String} [method] [method of split]
+ * @param  {String} [text]
+ * @return {String[]} [results]
+
+  ### Methods of split
+
+1. 'block': split text by multi new lines
 2. 'line': split text by lines
 3. 'whitespace': split text by white spaces
 4. 'patternInBlock': split text by the repetitive pattern in text block
