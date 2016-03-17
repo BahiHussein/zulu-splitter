@@ -14,6 +14,8 @@ A library to split according to
 
 ## Usage
 
+```javascript
+
   var splitter = require('zulu-splitter');
 
   var text1 = 'name: John Doe \n email: John.Doe@gmail.com \n id:88454 \n\n name: John Roe \n email: John.Roe@gmail.com \n id:88757 \n\n name: Richard Roe \n email: Richard.Roe@gmail.com \n id: 88151';
@@ -60,6 +62,7 @@ var nodes = splitter.split('patternInLine', text3);
     ['John Doe', 'Richard Roe', 'John Roe']
     }
 
+```
 
 ## split()
 
