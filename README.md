@@ -76,9 +76,10 @@ using 'patternInBlock' the splitter will find the pattern in the text and will s
 ## Methods
 
 ### split() 
- * @param  {String} [method] [method of split]
- * @param  {String} [text]
- * @return {String[]} [results]
+
+ + @param  {String} [method] [method of split]
+ + @param  {String} [text]
+ + @return {String[]} [results]
 
 ### Methods of split
 
