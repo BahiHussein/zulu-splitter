@@ -43,16 +43,16 @@ using splitter.split('block', text) will split text according to their grouping 
 **Example 2**: if you are scanning file with unknown pattern, you may use linePatter or/and blockPattern to split the text. see the text below. 
 
 ```php
-='USER ID:pandya.maitri01@gmail.com';
+='USER ID:pandmaitr.ya01i@gmail.com';
 ='PASSWARD:97270727';
 ?><?php
 ='USER ID:KANU';
 ='PASSWARD:VOILAAA';
 ?><?php
-='USER ID:darfaisal222@yahoo.com';
+='USER ID:aisal222darf@yahoo.com';
 ='PASSWARD:9123456789';
 ?><?php
-='USER ID:mehrajnazir@gmail.com';
+='USER ID:naxirmehra@gmail.com';
 ='PASSWARD:901837074545';
 ?><?php
 ```
@@ -62,14 +62,14 @@ using 'patternInBlock' the splitter will find the pattern in the text and will s
 ```javascript
 { pattern: '?><?php',
   nodes:[ 
-    '=\'USER ID:pandya.maitri01@gmail.com\'; \n=\'PASSWARD:97270727\'; \n ',
+    '=\'USER ID:pandmaitr.ya01i@gmail.com\'; \n=\'PASSWARD:97270727\'; \n ',
     ' \n =\'USER ID:KANU\'; \n =\'PASSWARD:VOILAAA\'; \n ',
-    ' \n =\'USER ID:darfaisal222@yahoo.com\'; \n =\'PASSWARD:9123456789\'; \n ',
-    ' \n =\'USER ID:mehrajnazir@gmail.com\'; \n =\'PASSWARD:901837074545\'; \n ',
+    ' \n =\'USER ID:aisal222darf@yahoo.com\'; \n =\'PASSWARD:9123456789\'; \n ',
+    ' \n =\'USER ID:naxirmehra@gmail.com\'; \n =\'PASSWARD:901837074545\'; \n ',
     ' \n =\'USER ID:khanmehandilo@gmail.com\'; \n =\'PASSWARD:horsefish\'; \n ',
-    ' \n =\'USER ID:vickylove0001@gmail.com\'; \n =\'PASSWARD:9023239124\'; \n  ',
-    ' \n =\'USER ID:jerin41@gmail.com\'; \n =\'PASSWARD:redhotchiile\'; \n ',
-    ' \n =\'USER ID:abiddar@yahoo.' 
+    ' \n =\'USER ID:viloveckylo01@gmail.com\'; \n =\'PASSWARD:9023239124\'; \n  ',
+    ' \n =\'USER ID:jrrin4ove1@gmail.com\'; \n =\'PASSWARD:redhotchiile\'; \n ',
+    ' \n =\'USER ID:abidamor@yahoo.com' 
     ] 
 }
 ```
@@ -80,7 +80,7 @@ using 'patternInBlock' the splitter will find the pattern in the text and will s
  * @param  {String} [text]
  * @return {String[]} [results]
 
-  ### Methods of split
+### Methods of split
 
 1. 'block': split text by multi new lines
 2. 'line': split text by lines
